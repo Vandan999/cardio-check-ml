@@ -1,124 +1,101 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CardioCheck</title>
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CardioCheck | Cardiovascular Risk Prediction</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-<header class="header">
-    <div class="container">
-        <h1>CardioCheck</h1>
-        <p>Cardiovascular Disease Prediction</p>
-    </div>
+<div class="ambient a1"></div><div class="ambient a2"></div>
+
+<header class="topbar">
+  <div class="nav">
+    <a class="brand" href="#"><b>♥</b> Cardio<span>Check</span></a>
+    <div class="badge"><i></i> ML Prediction System</div>
+  </div>
 </header>
 
-<main class="container">
-    <section class="intro">
-        <h2>Check Cardiovascular Risk</h2>
-        <p>Enter patient information and use the trained Gradient Boosting model to predict the cardiovascular disease class.</p>
-    </section>
+<main>
+<section class="hero">
+  <div class="reveal">
+    <div class="eyebrow">✦ MACHINE LEARNING HEALTH DEMO</div>
+    <h1>Understand your<br><span>cardiovascular risk.</span></h1>
+    <p>Enter health and lifestyle details and let CardioCheck generate a prediction using a trained Gradient Boosting model.</p>
+    <div class="points"><span>✓ Fast prediction</span><span>✓ Interactive results</span><span>✓ ML-powered</span></div>
+  </div>
+  <div class="hero-art reveal delay">
+    <div class="orb">
+      <div class="ring r1"></div><div class="ring r2"></div><div class="heart">♥</div>
+      <div class="float f1">AI Analysis<strong>Active</strong></div>
+      <div class="float f2">Prediction<strong>Ready</strong></div>
+    </div>
+  </div>
+</section>
 
-    <form id="predictionForm" class="card">
-        <div class="form-grid">
+<section class="workspace">
+  <div class="heading reveal">
+    <div><small>PATIENT PROFILE</small><h2>Tell us about the profile</h2></div>
+    <span>11 inputs</span>
+  </div>
 
-            <div class="form-group">
-                <label for="age">Age (years)</label>
-                <input type="number" id="age" min="1" max="120" placeholder="e.g. 55" required>
-            </div>
+  <form id="predictionForm" class="card reveal delay">
+    <div class="progress"><div id="progressBar"></div></div>
 
-            <div class="form-group">
-                <label for="gender">Gender</label>
-                <select id="gender" required>
-                    <option value="">Select gender</option>
-                    <option value="1">Male</option>
-                    <option value="2">Female</option>
-                </select>
-            </div>
+    <div class="form-section">
+      <div class="section-title"><b>01</b><div><h3>Basic information</h3><p>General physical details</p></div></div>
+      <div class="grid two">
+        <div class="field"><label>Age <small>years</small></label><div class="input"><em>◷</em><input id="age" type="number" min="1" max="120" placeholder="55" required></div></div>
+        <div class="field"><label>Gender</label><div class="input"><em>◉</em><select id="gender" required><option value="">Select gender</option><option value="1">Male</option><option value="2">Female</option></select></div></div>
+        <div class="field"><label>Height <small>cm</small></label><div class="input"><em>↕</em><input id="height" type="number" min="100" max="250" placeholder="170" required></div></div>
+        <div class="field"><label>Weight <small>kg</small></label><div class="input"><em>⚖</em><input id="weight" type="number" min="30" max="250" step="0.1" placeholder="70" required></div></div>
+      </div>
+    </div>
 
-            <div class="form-group">
-                <label for="height">Height (cm)</label>
-                <input type="number" id="height" min="100" max="250" placeholder="e.g. 170" required>
-            </div>
+    <div class="form-section">
+      <div class="section-title"><b>02</b><div><h3>Vital measurements</h3><p>Blood pressure readings</p></div></div>
+      <div class="bp">
+        <div class="bp-icon">♥</div>
+        <div class="field"><label>Systolic BP <small>mmHg</small></label><div class="input"><input id="ap_hi" type="number" min="1" placeholder="120" required></div></div>
+        <strong>/</strong>
+        <div class="field"><label>Diastolic BP <small>mmHg</small></label><div class="input"><input id="ap_lo" type="number" min="1" placeholder="80" required></div></div>
+      </div>
+    </div>
 
-            <div class="form-group">
-                <label for="weight">Weight (kg)</label>
-                <input type="number" id="weight" min="30" max="250" step="0.1" placeholder="e.g. 70" required>
-            </div>
+    <div class="form-section">
+      <div class="section-title"><b>03</b><div><h3>Health & lifestyle</h3><p>Factors used by the model</p></div></div>
+      <div class="grid three">
+        <div class="field"><label>Cholesterol</label><div class="input"><em>◌</em><select id="cholesterol" required><option value="">Select level</option><option value="1">Normal</option><option value="2">Above normal</option><option value="3">Well above normal</option></select></div></div>
+        <div class="field"><label>Glucose</label><div class="input"><em>⌁</em><select id="gluc" required><option value="">Select level</option><option value="1">Normal</option><option value="2">Above normal</option><option value="3">Well above normal</option></select></div></div>
+        <div class="field"><label>Physically active?</label><div class="input"><em>⚡</em><select id="active" required><option value="">Select</option><option value="0">No</option><option value="1">Yes</option></select></div></div>
+        <div class="field"><label>Smokes?</label><div class="input"><em>◒</em><select id="smoke" required><option value="">Select</option><option value="0">No</option><option value="1">Yes</option></select></div></div>
+        <div class="field"><label>Consumes alcohol?</label><div class="input"><em>◍</em><select id="alco" required><option value="">Select</option><option value="0">No</option><option value="1">Yes</option></select></div></div>
+      </div>
+    </div>
 
-            <div class="form-group">
-                <label for="ap_hi">Systolic BP</label>
-                <input type="number" id="ap_hi" min="1" placeholder="e.g. 120" required>
-            </div>
+    <button id="predictButton" class="predict" type="submit"><span>✦</span><b class="btn-text">Analyze cardiovascular risk</b><strong>→</strong></button>
+    <p class="note">Educational ML project only — this prediction is not a medical diagnosis.</p>
+  </form>
+</section>
 
-            <div class="form-group">
-                <label for="ap_lo">Diastolic BP</label>
-                <input type="number" id="ap_lo" min="1" placeholder="e.g. 80" required>
-            </div>
-
-            <div class="form-group">
-                <label for="cholesterol">Cholesterol</label>
-                <select id="cholesterol" required>
-                    <option value="">Select level</option>
-                    <option value="1">Normal</option>
-                    <option value="2">Above normal</option>
-                    <option value="3">Well above normal</option>
-                </select>
-            </div>
-
-            <div class="form-group">
-                <label for="gluc">Glucose</label>
-                <select id="gluc" required>
-                    <option value="">Select level</option>
-                    <option value="1">Normal</option>
-                    <option value="2">Above normal</option>
-                    <option value="3">Well above normal</option>
-                </select>
-            </div>
-
-            <div class="form-group">
-                <label for="smoke">Smokes?</label>
-                <select id="smoke" required>
-                    <option value="">Select</option>
-                    <option value="0">No</option>
-                    <option value="1">Yes</option>
-                </select>
-            </div>
-
-            <div class="form-group">
-                <label for="alco">Consumes alcohol?</label>
-                <select id="alco" required>
-                    <option value="">Select</option>
-                    <option value="0">No</option>
-                    <option value="1">Yes</option>
-                </select>
-            </div>
-
-            <div class="form-group">
-                <label for="active">Physically active?</label>
-                <select id="active" required>
-                    <option value="">Select</option>
-                    <option value="0">No</option>
-                    <option value="1">Yes</option>
-                </select>
-            </div>
-
-           
-        </div>
-
-        <button type="submit">Predict Cardiovascular Risk</button>
-        <p class="note">For ML project demonstration only. Not a medical diagnosis.</p>
-    </form>
-
-    <section id="result" class="result hidden">
-        <h2 id="resultTitle"></h2>
-        <p id="resultText"></p>
-        <div>Probability of Class 1: <strong id="probabilityValue">--</strong></div>
-    </section>
+<section id="result" class="result hidden">
+  <div class="result-head"><div><small>ANALYSIS COMPLETE</small><h2 id="resultTitle">Prediction result</h2><p id="resultText"></p></div><button id="resetButton">↻ New analysis</button></div>
+  <div class="result-grid">
+    <div class="score-wrap"><div id="scoreRing" class="score"><div><strong id="probabilityValue">--</strong><span>class 1 probability</span></div></div></div>
+    <div class="details">
+      <div><i>◈</i><p><small>MODEL</small><strong>Gradient Boosting</strong></p></div>
+      <div><i>✓</i><p><small>INPUTS ANALYZED</small><strong>11 health & lifestyle features</strong></p></div>
+      <div><i>◎</i><p><small>OUTPUT</small><strong id="classValue">Class --</strong></p></div>
+    </div>
+  </div>
+  <p class="disclaimer">The result represents the model's prediction for the supplied data. It should not be used for diagnosis or treatment decisions.</p>
+</section>
 </main>
 
-<footer>CardioCheck • Machine Learning Project • Gradient Boosting</footer>
+<footer><span>CardioCheck • Machine Learning Project</span><span>Built with Flask + Gradient Boosting</span></footer>
 <script src="script.js"></script>
 </body>
 </html>
